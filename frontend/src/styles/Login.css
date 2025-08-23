@@ -74,7 +74,7 @@
 
 .primary-btn {
   flex: 1;
-  background-color: #50b53e;
+  background-color: #328a32;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -86,7 +86,7 @@
 }
 
 .primary-btn:hover {
-  background-color: #438f43;
+  background-color: #549654;
 }
 
 .divider-vertical {
@@ -146,7 +146,7 @@
 .link-btn {
   background: none;
   border: none;
-  color: #53c853;
+  color: #328a32;
   cursor: pointer;
   text-decoration: underline;
   font-size: 0.9rem;
@@ -364,5 +364,135 @@
   
   .buttons-row {
     gap: 3rem;
+  }
+}
+
+/* Modal Overlay Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.modal-form {
+  margin-bottom: 1.5rem;
+}
+
+.modal-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.modal-form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid rgba(221, 221, 221, 0.8);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.modal-form-group input:focus {
+  outline: none;
+  border-color: #82C282;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  background-color: #328a32;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-submit-btn:hover {
+  background-color: #549654;
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 2rem;
+    margin: 1rem;
+    max-width: none;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.3rem;
   }
 }
