@@ -137,3 +137,16 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Ballerina build
+backend/target/
+
+# Logs (backend or general)
+backend/logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+*.env
