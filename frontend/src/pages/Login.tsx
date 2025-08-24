@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     <div className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Hero Section with Background */}
       <div 
-        className="flex-1 bg-cover bg-center flex items-center justify-center relative"
+        className="h-[60vh] bg-cover bg-center flex items-center justify-center relative"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/src/assets/images/loginBg.jpg')`
         }}
@@ -30,11 +30,11 @@ const Login: React.FC = () => {
       </div>
 
       {/* Login/Signup Section */}
-      <div className="bg-gray-50 !p-12 md:!p-16 flex items-center justify-center min-h-[40vh]" style={{ padding: '3rem' }}>
+      <div className="h-[40vh] bg-gray-50 !p-6 md:!p-8 flex items-center justify-center" style={{ padding: '1.5rem' }}>
         <div 
-          className="bg-white !p-12 md:!p-16 xl:!p-20 rounded-xl shadow-lg w-full max-w-4xl xl:max-w-6xl !m-0" 
+          className="bg-white !p-6 md:!p-8 xl:!p-10 rounded-xl shadow-lg w-full max-w-4xl xl:max-w-6xl !m-0" 
           style={{ 
-            padding: '3rem 4rem', 
+            padding: '1.5rem 2.5rem', 
             margin: '0',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
             backgroundColor: 'white'
@@ -42,8 +42,8 @@ const Login: React.FC = () => {
         >
           <div className="text-center !m-0" style={{ margin: '0' }}>
             <div 
-              className="flex flex-col md:flex-row gap-8 md:gap-12 xl:gap-16 !mb-8 items-center !mx-0" 
-              style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}
+              className="flex flex-col md:flex-row gap-4 md:gap-6 xl:gap-8 !mb-4 items-center !mx-0" 
+              style={{ marginBottom: '1rem', marginLeft: '0', marginRight: '0' }}
             >
               <button 
                 className="flex-1 !bg-green-800 hover:!bg-green-600 !text-white !border-0 !py-4 !px-8 rounded-lg text-lg font-medium cursor-pointer transition-all duration-300 ease-in-out outline-none min-w-[220px] !m-0"
@@ -85,7 +85,7 @@ const Login: React.FC = () => {
               </button>
             </div>
 
-            <div className="!mt-6 !mx-0" style={{ marginTop: '1.5rem', marginLeft: '0', marginRight: '0' }}>
+            <div className="!mt-3 !mx-0" style={{ marginTop: '0.75rem', marginLeft: '0', marginRight: '0' }}>
               <span className="text-gray-500 text-sm mr-2">
                 {isSignup ? "Already have an account?" : "Don't have an account?"}
               </span>
