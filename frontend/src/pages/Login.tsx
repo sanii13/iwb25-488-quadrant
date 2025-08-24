@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/Login.css';
 
 const Login: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -15,30 +14,68 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="h-screen w-screen flex flex-col overflow-hidden">
       {/* Hero Section with Background */}
-      <div className="hero-section">
-        <div className="hero-content">
-          <h1 className="app-title">AyurConnect</h1>
+      <div 
+        className="flex-1 bg-cover bg-center flex items-center justify-center relative"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/src/assets/images/loginBg.jpg')`
+        }}
+      >
+        <div className="text-center z-20">
+          <h1 className="text-5xl lg:text-6xl xl:text-8xl font-light text-emerald-400 drop-shadow-lg tracking-widest lg:tracking-wider xl:tracking-[4px] font-serif">
+            AyurConnect
+          </h1>
         </div>
       </div>
 
       {/* Login/Signup Section */}
-      <div className="auth-section">
-        <div className="auth-container">
-          <div className="initial-view">
-            <div className="buttons-row">
+      <div className="bg-gray-50 !p-12 md:!p-16 flex items-center justify-center min-h-[40vh]" style={{ padding: '3rem' }}>
+        <div 
+          className="bg-white !p-12 md:!p-16 xl:!p-20 rounded-xl shadow-lg w-full max-w-4xl xl:max-w-6xl !m-0" 
+          style={{ 
+            padding: '3rem 4rem', 
+            margin: '0',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+            backgroundColor: 'white'
+          }}
+        >
+          <div className="text-center !m-0" style={{ margin: '0' }}>
+            <div 
+              className="flex flex-col md:flex-row gap-8 md:gap-12 xl:gap-16 !mb-8 items-center !mx-0" 
+              style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}
+            >
               <button 
-                className="primary-btn"
+                className="flex-1 !bg-green-800 hover:!bg-green-600 !text-white !border-0 !py-4 !px-8 rounded-lg text-lg font-medium cursor-pointer transition-all duration-300 ease-in-out outline-none min-w-[220px] !m-0"
+                style={{ 
+                  backgroundColor: '#2d5016', 
+                  color: 'white', 
+                  border: 'none',
+                  padding: '1rem 2rem',
+                  margin: '0'
+                }}
                 onClick={handleButtonClick}
               >
                 {isSignup ? 'Signup' : 'Login'}
               </button>
               
-              <div className="divider-vertical"></div>
+              <div className="w-full md:w-px h-px md:h-12 bg-gray-300 relative !mx-4">
+                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gray-500 text-sm">
+                  or
+                </span>
+              </div>
 
-              <button className="google-btn">
-                <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20">
+              <button 
+                className="flex-1 !bg-white !border-2 !border-gray-300 hover:!border-green-400 !py-4 !px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 ease-in-out text-base !text-gray-700 outline-none min-w-[220px] !m-0"
+                style={{ 
+                  backgroundColor: 'white', 
+                  color: '#374151', 
+                  border: '2px solid #d1d5db',
+                  padding: '1rem',
+                  margin: '0'
+                }}
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" width="20" height="20">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -48,12 +85,13 @@ const Login: React.FC = () => {
               </button>
             </div>
 
-            <div className="toggle-section">
-              <span className="toggle-text">
+            <div className="!mt-6 !mx-0" style={{ marginTop: '1.5rem', marginLeft: '0', marginRight: '0' }}>
+              <span className="text-gray-500 text-sm mr-2">
                 {isSignup ? "Already have an account?" : "Don't have an account?"}
               </span>
               <button 
-                className="link-btn"
+                className="!bg-transparent !border-0 !text-green-800 hover:!text-green-600 cursor-pointer underline text-sm outline-none !m-0"
+                style={{ backgroundColor: 'transparent', color: '#166534', border: 'none', margin: '0' }}
                 onClick={handleToggleMode}
               >
                 {isSignup ? "Login Here" : "Register Here"}
@@ -65,66 +103,111 @@ const Login: React.FC = () => {
 
       {/* Modal Overlay for Login Form */}
       {showForm && (
-        <div className="modal-overlay" onClick={() => setShowForm(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div 
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] backdrop-blur-sm"
+          onClick={() => setShowForm(false)}
+        >
+          <div 
+            className="bg-white/95 backdrop-blur-lg rounded-2xl !p-12 md:!p-16 w-[90%] max-w-lg shadow-2xl border border-white/20 relative !m-4"
+            style={{ 
+              padding: '3rem', 
+              margin: '1rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.95)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button 
-              className="modal-close"
+              className="absolute top-4 right-4 !bg-transparent !border-0 text-2xl text-gray-500 hover:bg-gray-100 cursor-pointer !p-2 rounded-full transition-colors duration-300 outline-none !m-0"
+              style={{ backgroundColor: 'transparent', border: 'none', padding: '0.5rem', margin: '0' }}
               onClick={() => setShowForm(false)}
             >
               ×
             </button>
             
-            <h2 className="modal-title">
+            <h2 className="text-center text-gray-800 !mb-8 text-xl md:text-2xl font-medium !mx-0" style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}>
               {isSignup ? 'Sign up for AyurConnect' : 'Login to AyurConnect'}
             </h2>
             
-            <form className="modal-form">
-              <div className="modal-form-group">
-                <label htmlFor="email">Email</label>
+            <form className="!mb-6 !mx-0" style={{ marginBottom: '1.5rem', marginLeft: '0', marginRight: '0' }}>
+              <div className="!mb-8 !mx-0" style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}>
+                <label htmlFor="email" className="block !mb-3 text-gray-700 font-medium text-sm" style={{ marginBottom: '0.75rem' }}>Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="Enter your email"
+                  className="w-full !p-4 !py-4 border-2 border-gray-300/80 rounded-lg text-base transition-colors duration-300 bg-white/90 focus:outline-none focus:border-green-400 focus:ring-0 !h-14"
+                  style={{ 
+                    padding: '1rem', 
+                    height: '3.5rem',
+                    lineHeight: '1.5',
+                    fontSize: '1rem'
+                  }}
                   required
                 />
               </div>
 
-              <div className="modal-form-group">
-                <label htmlFor="password">Password</label>
+              <div className="!mb-8 !mx-0" style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}>
+                <label htmlFor="password" className="block !mb-3 text-gray-700 font-medium text-sm" style={{ marginBottom: '0.75rem' }}>Password</label>
                 <input
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Enter your password"
+                  className="w-full !p-4 !py-4 border-2 border-gray-300/80 rounded-lg text-base transition-colors duration-300 bg-white/90 focus:outline-none focus:border-green-400 focus:ring-0 !h-14"
+                  style={{ 
+                    padding: '1rem', 
+                    height: '3.5rem',
+                    lineHeight: '1.5',
+                    fontSize: '1rem'
+                  }}
                   required
                 />
               </div>
 
               {isSignup && (
-                <div className="modal-form-group">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
+                <div className="!mb-8 !mx-0" style={{ marginBottom: '2rem', marginLeft: '0', marginRight: '0' }}>
+                  <label htmlFor="confirmPassword" className="block !mb-3 text-gray-700 font-medium text-sm" style={{ marginBottom: '0.75rem' }}>Confirm Password</label>
                   <input
                     type="password"
                     id="confirmPassword"
                     name="confirmPassword"
                     placeholder="Confirm your password"
+                    className="w-full !p-4 !py-4 border-2 border-gray-300/80 rounded-lg text-base transition-colors duration-300 bg-white/90 focus:outline-none focus:border-green-400 focus:ring-0 !h-14"
+                    style={{ 
+                      padding: '1rem', 
+                      height: '3.5rem',
+                      lineHeight: '1.5',
+                      fontSize: '1rem'
+                    }}
                     required
                   />
                 </div>
               )}
 
-              <button type="submit" className="modal-submit-btn">
+              <button 
+                type="submit" 
+                className="w-full !bg-green-800 hover:!bg-green-600 !text-white !border-0 !p-4 !py-4 rounded-lg text-lg font-medium cursor-pointer transition-colors duration-300 outline-none !mt-6 !h-14"
+                style={{ 
+                  backgroundColor: '#2d5016', 
+                  color: 'white', 
+                  border: 'none',
+                  padding: '1rem',
+                  height: '3.5rem',
+                  marginTop: '1.5rem'
+                }}
+              >
                 {isSignup ? 'Sign Up' : 'Login'}
               </button>
             </form>
 
-            <div className="modal-footer">
-              <span className="toggle-text">
+            <div className="text-center !mt-8 !mx-0" style={{ marginTop: '2rem', marginLeft: '0', marginRight: '0' }}>
+              <span className="text-gray-500 text-sm mr-2">
                 {isSignup ? "Already have an account?" : "Don't have an account?"}
               </span>
               <button 
-                className="link-btn"
+                className="!bg-transparent !border-0 !text-green-800 hover:!text-green-600 cursor-pointer underline text-sm outline-none"
+                style={{ backgroundColor: 'transparent', color: '#166534', border: 'none' }}
                 onClick={handleToggleMode}
               >
                 {isSignup ? "Login Here" : "Register Here"}
