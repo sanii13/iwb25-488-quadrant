@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -8,7 +7,6 @@ const Login: React.FC = () => {
   const [showRoleForm, setShowRoleForm] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'patient' | 'doctor' | null>(null);
   
-  const navigate = useNavigate();
 
   const handleToggleMode = () => {
     setIsSignup(!isSignup);
@@ -20,10 +18,6 @@ const Login: React.FC = () => {
 
   const handleButtonClick = () => {
     setShowForm(true);
-  };
-
-  const handleHomeClick = () => {
-    navigate('/');
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {

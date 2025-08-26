@@ -20,13 +20,6 @@
     }
 }
 
-
-
-
-
-
-
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -38,13 +31,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  /* border-color: #97e7aa; */
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
