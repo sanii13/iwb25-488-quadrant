@@ -6,6 +6,7 @@ const Login: React.FC = () => {
   const [showRoleSelection, setShowRoleSelection] = useState(false);
   const [showRoleForm, setShowRoleForm] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'patient' | 'doctor' | null>(null);
+  
 
   const handleToggleMode = () => {
     setIsSignup(!isSignup);
@@ -55,6 +56,8 @@ const Login: React.FC = () => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/src/assets/images/loginBg.jpg')`
         }}
       >
+
+        
         <div className="text-center z-20">
           <h1 className="text-5xl lg:text-6xl xl:text-8xl font-light text-emerald-400 drop-shadow-lg tracking-widest lg:tracking-wider xl:tracking-[4px] font-serif">
             AyurConnect
