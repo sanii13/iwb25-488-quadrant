@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <div className="flex flex-col justify-center items-center  h-[630px] w-full " style={{fontFamily: 'Poppins, sans-serif', marginTop: '10vh', backgroundImage: `url(${homebg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="flex flex-col justify-center items-center bg-white bg-opacity-10 p-8 " style={{ opacity: 0.8, backdropFilter: 'blur(10px)', padding:'16vh', borderRadius:'25px' }}>
           <h1 className="text-3xl">🌿 </h1>
-          <h1 className="text-black text-3xl font-bold-500 mb-4">Healing Naturally</h1>
+          <h1 className="text-black text-3xl font-bold-500 mb-4" style={{paddingBottom: '1rem'}}>Healing Naturally</h1>
           <p className="text-black font-400 text-[16px] text-center max-w-lg">Discover trusted Ayurvedic remedies, connect with experienced doctors, and explore the healing power of Sri Lanka’s indigenous herbal knowledge – all in one place.
           </p>
         </div>
@@ -168,9 +168,10 @@ const Home: React.FC = () => {
 
         <div className="bg-green-100 flex flex-col md:flex-row gap-8 justify-center items-stretch w-full max-w mb-10 px-4" style={{paddingBottom:'4rem'}} >
           <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif'}}>
-          Explore Articles
+          <a href="">Explore Articles</a> 
           <span className="text-2xl">&#8594;</span>
         </button>
+        
         </div>
         
       </section>
