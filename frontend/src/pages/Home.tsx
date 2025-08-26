@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <div className="flex flex-col justify-center items-center  h-[630px] w-full " style={{fontFamily: 'Poppins, sans-serif', marginTop: '10vh', backgroundImage: `url(${homebg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="flex flex-col justify-center items-center bg-white bg-opacity-10 p-8 " style={{ opacity: 0.8, backdropFilter: 'blur(10px)', padding:'16vh', borderRadius:'25px' }}>
           <h1 className="text-3xl">🌿 </h1>
-          <h1 className="text-black text-3xl font-bold-500 mb-4">Healing Naturally</h1>
+          <h1 className="text-black text-3xl font-bold-500 mb-4" style={{paddingBottom: '1rem'}}>Healing Naturally</h1>
           <p className="text-black font-400 text-[16px] text-center max-w-lg">Discover trusted Ayurvedic remedies, connect with experienced doctors, and explore the healing power of Sri Lanka’s indigenous herbal knowledge – all in one place.
           </p>
         </div>
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
       {/* Articles Section */}
       <section className="w-full bg-[#f7f8fa] py-16 flex flex-col items-center" style={{fontFamily: 'Poppins, sans-serif', paddingTop:'3rem', paddingBottom:'0rem'}}>
         <h2 className="text-3xl md:text-4xl font-bold-500 text-[#183153] mb-4 text-center" style={{marginBottom: '2rem'}}>Articles</h2>
-        <p className="tracking-wider text-justify text-gray-700 text-center max-w-5xl mb-10 px-2 text-base md:text-[16px]" style={{paddingBottom: '8rem'}}>
+        <p className="tracking-wider text-justify text-gray-700 text-center max-w-5xl mb-10 px-2 text-base md:text-[16px]" style={{paddingBottom: '4rem'}}>
           Stay informed and inspired with articles focused on Ayurveda, holistic wellness, and healthy lifestyle practices. From practical tips on nutrition and stress management to insights into traditional healing philosophies, this section provides reliable knowledge for everyday wellbeing.
         </p>
         <div className="bg-green-100 flex flex-col md:flex-row gap-8 justify-center items-stretch w-full max-w mb-10 px-4" style={{ paddingBottom: '4rem'}}>
@@ -166,11 +166,12 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-green-100 flex flex-col md:flex-row gap-8 justify-center items-stretch w-full max-w mb-10 px-4" style={{paddingBottom:'4rem'}} >
+        <div className=" flex  gap-8 justify-center items-stretch w-full max-w px-4" style={{paddingBottom:'4rem'}} >
           <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif'}}>
-          Explore Articles
+          <a href="" className="tracking-widest">Explore Articles</a> 
           <span className="text-2xl">&#8594;</span>
         </button>
+        
         </div>
         
       </section>
