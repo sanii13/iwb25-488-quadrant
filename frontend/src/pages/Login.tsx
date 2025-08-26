@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -6,6 +7,8 @@ const Login: React.FC = () => {
   const [showRoleSelection, setShowRoleSelection] = useState(false);
   const [showRoleForm, setShowRoleForm] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'patient' | 'doctor' | null>(null);
+  
+  const navigate = useNavigate();
 
   const handleToggleMode = () => {
     setIsSignup(!isSignup);
@@ -17,6 +20,10 @@ const Login: React.FC = () => {
 
   const handleButtonClick = () => {
     setShowForm(true);
+  };
+
+  const handleHomeClick = () => {
+    navigate('/');
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -55,6 +62,8 @@ const Login: React.FC = () => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/src/assets/images/loginBg.jpg')`
         }}
       >
+
+        
         <div className="text-center z-20">
           <h1 className="text-5xl lg:text-6xl xl:text-8xl font-light text-emerald-400 drop-shadow-lg tracking-widest lg:tracking-wider xl:tracking-[4px] font-serif">
             AyurConnect
