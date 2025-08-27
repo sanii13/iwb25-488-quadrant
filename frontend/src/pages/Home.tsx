@@ -60,7 +60,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif', marginTop: '3rem', marginBottom: '1rem'}}>
-          <a href="">Discover Remedies</a>
+          <a href="/remedies">Discover Remedies</a>
           <span className="text-2xl">&#8594;</span>
         </button>
       </section>
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
             <p className="tracking-wider text-400 text-base md:text-[16px] mb-4" style={{marginBottom: '2rem'}}>Discover the healing power of Sri Lanka’s indigenous herbal plants, treasured for centuries for their medicinal value and cultural significance. Each plant profile highlights its local and botanical names, traditional uses, preparation methods, and cultivation details, offering a comprehensive guide to understanding their role in natural healthcare.</p>
             <p className="tracking-wider text-400 text-base md:text-[16px] mb-8"style={{marginBottom: '5rem'}}>This library not only preserves valuable knowledge but also helps you appreciate the deep connection between nature and wellness.</p>
             <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif'}}>
-              <a href="">Explore Herbal Plants</a>
+              <a href="/herbalplants">Explore Herbal Plants</a>
               <span className="text-2xl">&#8594;</span>
             </button>
           </div>
@@ -138,7 +138,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif', marginTop: '5rem', marginBottom: '1rem', paddingLeft: '2rem', paddingRight: '2rem'}}>
-          <a href="">Find Doctors</a>
+          <a href="/finddoctors">Find Doctors</a>
           <span className="text-2xl">&#8594;</span>
         </button>
       </section>
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
 
         <div className=" flex  gap-8 justify-center items-stretch w-full max-w px-4" style={{paddingBottom:'4rem'}} >
           <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif'}}>
-          <a href="" className="tracking-widest">Explore Articles</a> 
+          <a href="/articles" className="tracking-widest">Explore Articles</a> 
           <span className="text-2xl">&#8594;</span>
         </button>
         
