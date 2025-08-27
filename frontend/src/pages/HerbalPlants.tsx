@@ -131,7 +131,7 @@ const HerbalPlants: React.FC = () => {
 
       {/* Search Bar */}
       <div className="flex justify-center mt-6" style={{ marginTop: '3rem'}}>
-        <div className="flex w-full max-w-xl items-center bg-green-100 rounded-full shadow p-2">
+        <div className="flex w-full max-w-xl items-center bg-green-100 rounded-full shadow ">
           <input
             type="text"
             value={query}
