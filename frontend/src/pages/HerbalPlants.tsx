@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import PlantCard from "../components/plantCard";
+import SinglePlantModal from "../components/SinglePlantModal";
 import herbalbg from "../assets/images/herbalplantbg.png";
 import Mock from "../assets/images/mock.png";
 
@@ -16,6 +17,7 @@ type Plant = {
 const HerbalPlants: React.FC = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Plant[]>([]);
+  const [selectedPlant, setSelectedPlant] = useState<Plant | null>(null);
 
   const handleSearch = () => {
     if (!query.trim()) return;
@@ -156,9 +158,13 @@ const HerbalPlants: React.FC = () => {
     <div className="max-w-6xl mx-auto px-6 py-8" style={{margin:'auto', paddingTop:'4rem', paddingBottom:'4rem'}}>
     {results.length > 0 ? (
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {results.map((plant) => (
-            <PlantCard key={plant.id} plant={plant} />
-        ))}
+    {results.map((plant) => (
+      <PlantCard key={plant.id} plant={plant} onSeeMore={() => setSelectedPlant(plant)} />
+    ))}
+    {/* Single Plant Modal */}
+    {selectedPlant && (
+      <SinglePlantModal plant={selectedPlant} onClose={() => setSelectedPlant(null)} />
+    )}
         </div>
     ) : (
         <p className="text-gray-500 text-center">
