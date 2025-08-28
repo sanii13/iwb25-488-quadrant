@@ -9,6 +9,7 @@ controllers:ArticleController articleController = new;
 controllers:UserController userController = new;
 controllers:PatientController patientController = new;
 controllers:DoctorController doctorController = new;
+controllers:BookingController bookingController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -232,6 +233,80 @@ service /api/doctors on new http:Listener(8080) {
     // GET /api/doctors/count - Get doctors count
     resource function get count(http:Request req) returns http:Response {
         return doctorController.getDoctorsCount(req);
+    }
+}
+
+// Booking management service
+service /api/bookings on new http:Listener(8080) {
+
+    // POST /api/bookings - Create a new booking
+    resource function post .(http:Request req) returns http:Response {
+        return bookingController.createBooking(req);
+    }
+
+    // GET /api/bookings - Get all bookings
+    resource function get .(http:Request req) returns http:Response {
+        return bookingController.getAllBookings(req);
+    }
+
+    // GET /api/bookings/{id} - Get booking by ID
+    resource function get [int bookingId](http:Request req) returns http:Response {
+        return bookingController.getBookingById(req, bookingId);
+    }
+
+    // DELETE /api/bookings/{id} - Delete booking
+    resource function delete [int bookingId](http:Request req) returns http:Response {
+        return bookingController.deleteBooking(req, bookingId);
+    }
+
+    // GET /api/bookings/doctor/{doctorId}/upcoming - Get upcoming bookings by doctor
+    resource function get doctor/[int doctorId]/upcoming(http:Request req) returns http:Response {
+        return bookingController.getUpcomingDoctorBookings(req, doctorId);
+    }
+
+    // GET /api/bookings/patient/{patientId}/upcoming - Get upcoming bookings by patient
+    resource function get patient/[int patientId]/upcoming(http:Request req) returns http:Response {
+        return bookingController.getUpcomingPatientBookings(req, patientId);
+    }
+
+    // PATCH /api/bookings/{id}/status - Update booking status
+    resource function patch [int bookingId]/status(http:Request req) returns http:Response {
+        return bookingController.updateBookingStatus(req, bookingId);
+    }
+
+    // PATCH /api/bookings/{id}/cancel - Cancel booking
+    resource function patch [int bookingId]/cancel(http:Request req) returns http:Response {
+        return bookingController.cancelBooking(req, bookingId);
+    }
+
+    // PATCH /api/bookings/{id}/confirm - Confirm booking
+    resource function patch [int bookingId]/confirm(http:Request req) returns http:Response {
+        return bookingController.confirmBooking(req, bookingId);
+    }
+
+    // PATCH /api/bookings/{id}/complete - Complete booking
+    resource function patch [int bookingId]/complete(http:Request req) returns http:Response {
+        return bookingController.completeBooking(req, bookingId);
+    }
+
+    // GET /api/bookings/doctor/{doctorId}/available-slots/{date} - Get available time slots for a doctor on a specific date
+    resource function get doctor/[int doctorId]/available\-slots/[string date](http:Request req) returns http:Response {
+        return bookingController.getAvailableTimeSlots(req, doctorId, date);
+    }
+
+    // GET /api/bookings/doctor/{doctorId}/check-availability/{date}/{time} - Check if a specific time slot is available
+    resource function get doctor/[int doctorId]/check\-availability/[string date]/[string time](http:Request req) returns http:Response {
+        return bookingController.checkTimeSlotAvailability(req, doctorId, date, time);
+    }
+
+    // GET /api/bookings/doctor/{doctorId}/stats - Get booking statistics for a specific doctor
+    resource function get doctor/[int doctorId]/stats(http:Request req) returns http:Response {
+        return bookingController.getDoctorBookingStats(req, doctorId);
+    }
+
+    // GET /api/bookings/patient/{patientId}/stats - Get booking statistics for a specific patient
+    resource function get patient/[int patientId]/stats(http:Request req) returns http:Response {
+        return bookingController.getPatientBookingStats(req, patientId);
     }
 }
 
