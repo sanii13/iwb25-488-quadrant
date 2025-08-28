@@ -1,11 +1,10 @@
 import ballerina/http;
 
-// Remedy controller functions
-public function getRemedyHello() returns string {
-    return "Remedy controller is working!";
-}
+public service object {} remedyService = @http:ServiceConfig {
+    basePath: "/api/remedies"
+} service object {
 
-// Function to handle remedy-related HTTP requests
-public function handleRemedyRequest(http:Request req) returns string|error {
-    return "Remedy endpoint working!";
-}
+    resource function get hello() returns string {
+        return "Remedy endpoint working!";
+    }
+};
