@@ -1,6 +1,21 @@
 -- SQL migrations for Neon PostgreSQL
 -- Remedy Management System Database Schema
 
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+    user_id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL CHECK (role IN ('ADMIN', 'DOCTOR', 'PATIENT')),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for users table
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
+CREATE INDEX IF NOT EXISTS idx_users_created_at ON users(created_at);
+
 -- Create remedies table
 CREATE TABLE IF NOT EXISTS remedies (
     remedy_id SERIAL PRIMARY KEY,
@@ -206,5 +221,25 @@ INSERT INTO articles (title, category, content, image_url) VALUES
     'Getting Started',
     'Starting your journey into herbal medicine can feel overwhelming with so many plants and preparations to choose from. This beginner-friendly guide helps you build a well-rounded herbal medicine cabinet with essential herbs that address common health concerns. Learn about versatile herbs like Ginger for digestion and nausea, Elderberry for immune support, Valerian for sleep, and Arnica for bruises and injuries. We''ll cover different forms of herbal preparations including teas, tinctures, salves, and capsules, and when to use each type. The article includes storage tips to maintain potency, labeling suggestions for organization, and a shopping list of must-have herbs for beginners. Start your herbal journey with confidence and the right tools.',
     'https://example.com/images/herbal-medicine-cabinet.jpg'
+)
+ON CONFLICT DO NOTHING;
+
+-- Insert sample admin user for testing (password: admin123)
+-- Note: In production, use proper password hashing
+INSERT INTO users (email, password_hash, role) VALUES
+(
+    'admin@ayurconnect.com',
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', -- Hash of 'admin123'
+    'ADMIN'
+),
+(
+    'doctor@ayurconnect.com', 
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', -- Hash of 'admin123'
+    'DOCTOR'
+),
+(
+    'patient@ayurconnect.com',
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', -- Hash of 'admin123'
+    'PATIENT'
 )
 ON CONFLICT DO NOTHING;

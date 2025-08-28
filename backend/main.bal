@@ -6,6 +6,7 @@ import backend.controllers;
 controllers:RemedyController remedyController = new;
 controllers:HerbalPlantController herbalPlantController = new;
 controllers:ArticleController articleController = new;
+controllers:UserController userController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -68,6 +69,54 @@ service /api/articles on new http:Listener(8080) {
     resource function get [int articleId]() returns http:Response {
         http:Request req = new;
         return articleController.getArticleById(req, articleId);
+    }
+}
+
+// Authentication service for user management
+service /api/auth on new http:Listener(8080) {
+
+    // POST /api/auth/register - Register a new user
+    resource function post register(http:Request req) returns http:Response {
+        return userController.registerUser(req);
+    }
+
+    // POST /api/auth/login - User login
+    resource function post login(http:Request req) returns http:Response {
+        return userController.loginUser(req);
+    }
+
+    // GET /api/auth/profile - Get current user profile
+    resource function get profile(http:Request req) returns http:Response {
+        return userController.getCurrentUserProfile(req);
+    }
+}
+
+// User management service
+service /api/users on new http:Listener(8080) {
+
+    // GET /api/users - Get all users (admin only)
+    resource function get .(http:Request req) returns http:Response {
+        return userController.getAllUsers(req);
+    }
+
+    // GET /api/users/{id} - Get user by ID
+    resource function get [int userId](http:Request req) returns http:Response {
+        return userController.getUserById(req, userId);
+    }
+
+    // PUT /api/users/{id} - Update user
+    resource function put [int userId](http:Request req) returns http:Response {
+        return userController.updateUser(req, userId);
+    }
+
+    // DELETE /api/users/{id} - Delete user (admin only)
+    resource function delete [int userId](http:Request req) returns http:Response {
+        return userController.deleteUser(req, userId);
+    }
+
+    // GET /api/users/role/{role} - Get users by role (admin only)
+    resource function get role/[string role](http:Request req) returns http:Response {
+        return userController.getUsersByRole(req, role);
     }
 }
 
