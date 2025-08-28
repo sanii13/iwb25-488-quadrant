@@ -21,7 +21,7 @@ public class UserService {
             return {message: "Internal server error", details: emailExists.message()};
         }
         if emailExists {
-            return {message: "Email already exists", details: ()};
+            return {message: "Email already exists", details: "Email is already registered"};
         }
 
         // Hash the password using simple method
@@ -88,7 +88,7 @@ public class UserService {
             return {message: "Failed to retrieve user", details: user.message()};
         }
         if user is () {
-            return {message: "User not found", details: ()};
+            return {message: "User not found", details: "No user found with the given ID"};
         }
 
         return self.convertToUserResponse(user);
