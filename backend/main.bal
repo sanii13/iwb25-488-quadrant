@@ -5,6 +5,7 @@ import backend.controllers;
 // Global controller instances
 controllers:RemedyController remedyController = new;
 controllers:HerbalPlantController herbalPlantController = new;
+controllers:ArticleController articleController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -51,6 +52,22 @@ service /api/herbal\-plants on new http:Listener(8080) {
     resource function get [int plantId]() returns http:Response {
         http:Request req = new;
         return herbalPlantController.getHerbalPlantById(req, plantId);
+    }
+}
+
+// Main service for articles API endpoints
+service /api/articles on new http:Listener(8080) {
+
+    // GET /api/articles - Get all articles
+    resource function get .() returns http:Response {
+        http:Request req = new;
+        return articleController.getAllArticles(req);
+    }
+
+    // GET /api/articles/{id} - Get article by ID
+    resource function get [int articleId]() returns http:Response {
+        http:Request req = new;
+        return articleController.getArticleById(req, articleId);
     }
 }
 

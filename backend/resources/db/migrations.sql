@@ -39,6 +39,22 @@ CREATE INDEX IF NOT EXISTS idx_herbal_plants_botanical_name ON herbal_plants(bot
 CREATE INDEX IF NOT EXISTS idx_herbal_plants_local_name ON herbal_plants(local_name);
 CREATE INDEX IF NOT EXISTS idx_herbal_plants_created_at ON herbal_plants(created_at);
 
+-- Create articles table
+CREATE TABLE IF NOT EXISTS articles (
+    article_id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    image_url VARCHAR(500),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for articles table
+CREATE INDEX IF NOT EXISTS idx_articles_title ON articles(title);
+CREATE INDEX IF NOT EXISTS idx_articles_category ON articles(category);
+CREATE INDEX IF NOT EXISTS idx_articles_created_at ON articles(created_at);
+
 -- Insert sample data for testing (optional)
 INSERT INTO remedies (name, description, uses, ingredients, steps, cautions, image_url) VALUES
 (
@@ -150,5 +166,45 @@ INSERT INTO herbal_plants (botanical_name, local_name, description, medicinal_us
     'Stress reduction, anxiety relief, improved sleep, enhanced physical performance, immune support, and cognitive function improvement. Helps the body manage stress and maintain energy levels.',
     'Grow in well-draining soil with full sunlight. Sow seeds in spring or summer. Water moderately and avoid waterlogging. The plant is drought-tolerant once established. Harvest roots after 6-12 months for maximum potency. Dry roots properly for storage.',
     'https://example.com/images/ashwagandha-plant.jpg'
+)
+ON CONFLICT DO NOTHING;
+
+-- Insert sample articles data for testing (optional)
+INSERT INTO articles (title, category, content, image_url) VALUES
+(
+    'The Complete Guide to Ayurvedic Medicine',
+    'Traditional Medicine',
+    'Ayurveda, the ancient Indian system of medicine, has been practiced for over 5,000 years. This comprehensive guide explores the fundamental principles of Ayurveda, including the three doshas (Vata, Pitta, and Kapha), and how understanding your unique constitution can lead to better health and wellness. Learn about the importance of balance in Ayurvedic philosophy and discover how this holistic approach to health considers not just physical symptoms, but also mental, emotional, and spiritual well-being. We''ll cover the basic principles of Ayurvedic diagnosis, the role of diet and lifestyle in maintaining health, and introduce you to some of the most commonly used herbs and treatments in Ayurvedic practice.',
+    'https://example.com/images/ayurveda-guide.jpg'
+),
+(
+    'Top 10 Medicinal Plants Every Home Should Have',
+    'Herbal Medicine',
+    'Growing your own medicinal plants is one of the most rewarding ways to take charge of your health naturally. This article explores ten essential medicinal plants that are easy to grow and maintain in your home garden or even in pots. From the immune-boosting properties of Echinacea to the digestive benefits of Mint, we''ll cover each plant''s medicinal uses, growing requirements, and harvesting tips. You''ll learn about Aloe Vera for skin care, Lavender for relaxation, Chamomile for better sleep, Calendula for wound healing, and more. Each plant entry includes detailed care instructions, optimal growing conditions, and simple preparation methods for making your own herbal remedies at home.',
+    'https://example.com/images/medicinal-plants.jpg'
+),
+(
+    'Turmeric: The Golden Spice with Amazing Health Benefits',
+    'Herbal Medicine',
+    'Turmeric, known as the "golden spice," has been treasured in traditional medicine for thousands of years, and modern science is now validating many of its remarkable health benefits. This in-depth article explores the active compound curcumin and its powerful anti-inflammatory and antioxidant properties. Learn about turmeric''s role in supporting joint health, boosting immune function, promoting digestive wellness, and potentially protecting against various chronic diseases. We''ll also cover the best ways to consume turmeric for maximum absorption, including recipes for golden milk, turmeric tea, and incorporating fresh turmeric into your daily meals. Discover why this humble root deserves a place in every health-conscious kitchen.',
+    'https://example.com/images/turmeric-benefits.jpg'
+),
+(
+    'Understanding Herbal Interactions: Safety First',
+    'Safety & Guidelines',
+    'While herbal medicines offer many benefits, it''s crucial to understand that natural doesn''t always mean harmless. This essential safety guide covers important considerations when using herbal remedies, including potential interactions with prescription medications, appropriate dosages, and contraindications for certain health conditions. Learn how to research herbs thoroughly before use, when to consult with healthcare professionals, and how to source high-quality herbal products. We''ll discuss common herbs that may interact with blood thinners, diabetes medications, and heart medications. This article also covers special considerations for pregnant and nursing women, children, and elderly individuals. Knowledge is power when it comes to using herbs safely and effectively.',
+    'https://example.com/images/herbal-safety.jpg'
+),
+(
+    'Seasonal Cleansing with Ayurvedic Herbs',
+    'Seasonal Wellness',
+    'Ayurveda teaches us that our bodies need different support throughout the changing seasons. This comprehensive guide explores the concept of seasonal cleansing using traditional Ayurvedic herbs and practices. Learn about the gentle detoxification methods recommended for spring cleaning, summer cooling practices, autumn preparation techniques, and winter strengthening approaches. We''ll cover specific herbs like Triphala for digestive cleansing, Manjistha for blood purification, and Trikatu for metabolic support. The article includes seasonal meal plans, daily routines (dinacharya), and simple home remedies that align with nature''s rhythms. Discover how to support your body''s natural detoxification processes while maintaining energy and vitality throughout the year.',
+    'https://example.com/images/seasonal-cleansing.jpg'
+),
+(
+    'Building Your First Herbal Medicine Cabinet',
+    'Getting Started',
+    'Starting your journey into herbal medicine can feel overwhelming with so many plants and preparations to choose from. This beginner-friendly guide helps you build a well-rounded herbal medicine cabinet with essential herbs that address common health concerns. Learn about versatile herbs like Ginger for digestion and nausea, Elderberry for immune support, Valerian for sleep, and Arnica for bruises and injuries. We''ll cover different forms of herbal preparations including teas, tinctures, salves, and capsules, and when to use each type. The article includes storage tips to maintain potency, labeling suggestions for organization, and a shopping list of must-have herbs for beginners. Start your herbal journey with confidence and the right tools.',
+    'https://example.com/images/herbal-medicine-cabinet.jpg'
 )
 ON CONFLICT DO NOTHING;
