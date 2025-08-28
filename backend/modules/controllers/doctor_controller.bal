@@ -540,7 +540,17 @@ public class DoctorController {
             return response;
         }
 
-        decimal|error rating = (<decimal>payload.rating);
+        json|error ratingJson = payload.rating;
+        if ratingJson is error {
+            response.statusCode = 400;
+            response.setJsonPayload({
+                "message": "Invalid rating field",
+                "details": "Rating field is required"
+            });
+            return response;
+        }
+        
+        decimal|error rating = decimal:fromString(ratingJson.toString());
         if rating is error {
             response.statusCode = 400;
             response.setJsonPayload({
