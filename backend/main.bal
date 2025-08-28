@@ -2,8 +2,9 @@ import ballerina/http;
 import ballerina/time;
 import backend.controllers;
 
-// Global remedy controller instance
+// Global controller instances
 controllers:RemedyController remedyController = new;
+controllers:HerbalPlantController herbalPlantController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -34,6 +35,22 @@ service /api/remedies on new http:Listener(8080) {
     resource function delete [int remedyId]() returns http:Response {
         http:Request req = new;
         return remedyController.deleteRemedy(req, remedyId);
+    }
+}
+
+// Main service for herbal plants API endpoints
+service /api/herbal\-plants on new http:Listener(8080) {
+
+    // GET /api/herbal-plants - Get all herbal plants
+    resource function get .() returns http:Response {
+        http:Request req = new;
+        return herbalPlantController.getAllHerbalPlants(req);
+    }
+
+    // GET /api/herbal-plants/{id} - Get herbal plant by ID
+    resource function get [int plantId]() returns http:Response {
+        http:Request req = new;
+        return herbalPlantController.getHerbalPlantById(req, plantId);
     }
 }
 

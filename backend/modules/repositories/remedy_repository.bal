@@ -1,23 +1,7 @@
 import ballerina/sql;
-import ballerinax/postgresql;
 import ballerina/log;
 import backend.models;
-
-// Database configuration
-configurable string DB_HOST = ?;
-configurable int DB_PORT = ?;
-configurable string DB_NAME = ?;
-configurable string DB_USER = ?;
-configurable string DB_PASSWORD = ?;
-
-// Database connection pool
-postgresql:Client dbClient = check new (
-    host = DB_HOST,
-    port = DB_PORT,
-    database = DB_NAME,
-    username = DB_USER,
-    password = DB_PASSWORD
-);
+import backend.database;
 
 // Repository class for remedy operations
 public class RemedyRepository {
@@ -30,7 +14,7 @@ public class RemedyRepository {
             ORDER BY created_at DESC
         `;
         
-        stream<models:Remedy, sql:Error?> resultStream = dbClient->query(query);
+        stream<models:Remedy, sql:Error?> resultStream = database:dbClient->query(query);
         models:Remedy[] remedies = [];
         
         check from models:Remedy remedy in resultStream
@@ -50,7 +34,7 @@ public class RemedyRepository {
             WHERE remedy_id = ${remedyId}
         `;
         
-        models:Remedy|sql:Error result = dbClient->queryRow(query);
+        models:Remedy|sql:Error result = database:dbClient->queryRow(query);
         
         if result is sql:NoRowsError {
             return ();
@@ -73,7 +57,7 @@ public class RemedyRepository {
             RETURNING remedy_id, name, description, uses, ingredients, steps, cautions, image_url, created_at, updated_at
         `;
         
-        models:Remedy|sql:Error result = dbClient->queryRow(query);
+        models:Remedy|sql:Error result = database:dbClient->queryRow(query);
         
         if result is sql:Error {
             log:printError("Error creating remedy", 'error = result);
@@ -99,7 +83,7 @@ public class RemedyRepository {
             RETURNING remedy_id, name, description, uses, ingredients, steps, cautions, image_url, created_at, updated_at
         `;
         
-        models:Remedy|sql:Error result = dbClient->queryRow(query);
+        models:Remedy|sql:Error result = database:dbClient->queryRow(query);
         
         if result is sql:NoRowsError {
             return ();
@@ -117,7 +101,7 @@ public class RemedyRepository {
     public function deleteRemedy(int remedyId) returns boolean|error {
         sql:ParameterizedQuery query = `DELETE FROM remedies WHERE remedy_id = ${remedyId}`;
         
-        sql:ExecutionResult|sql:Error result = dbClient->execute(query);
+        sql:ExecutionResult|sql:Error result = database:dbClient->execute(query);
         
         if result is sql:Error {
             log:printError("Error deleting remedy", 'error = result);

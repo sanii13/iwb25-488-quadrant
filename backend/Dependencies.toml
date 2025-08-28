@@ -356,6 +356,7 @@ dependencies = [
 modules = [
 	{org = "sanid", packageName = "backend", moduleName = "backend"},
 	{org = "sanid", packageName = "backend", moduleName = "backend.controllers"},
+	{org = "sanid", packageName = "backend", moduleName = "backend.database"},
 	{org = "sanid", packageName = "backend", moduleName = "backend.models"},
 	{org = "sanid", packageName = "backend", moduleName = "backend.repositories"},
 	{org = "sanid", packageName = "backend", moduleName = "backend.services"},
