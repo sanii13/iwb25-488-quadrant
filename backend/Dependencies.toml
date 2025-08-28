@@ -212,6 +212,9 @@ dependencies = [
 	{org = "ballerina", name = "lang.value"},
 	{org = "ballerina", name = "observe"}
 ]
+modules = [
+	{org = "ballerina", packageName = "log", moduleName = "log"}
+]
 
 [[package]]
 org = "ballerina"
@@ -256,6 +259,20 @@ dependencies = [
 
 [[package]]
 org = "ballerina"
+name = "sql"
+version = "1.14.2"
+dependencies = [
+	{org = "ballerina", name = "io"},
+	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "lang.object"},
+	{org = "ballerina", name = "time"}
+]
+modules = [
+	{org = "ballerina", packageName = "sql", moduleName = "sql"}
+]
+
+[[package]]
+org = "ballerina"
 name = "task"
 version = "2.5.0"
 dependencies = [
@@ -284,6 +301,9 @@ version = "2.4.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
+modules = [
+	{org = "ballerina", packageName = "time", moduleName = "time"}
+]
 
 [[package]]
 org = "ballerina"
@@ -306,13 +326,32 @@ modules = [
 ]
 
 [[package]]
+org = "ballerinax"
+name = "postgresql"
+version = "1.13.0"
+dependencies = [
+	{org = "ballerina", name = "crypto"},
+	{org = "ballerina", name = "io"},
+	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "sql"},
+	{org = "ballerina", name = "time"}
+]
+modules = [
+	{org = "ballerinax", packageName = "postgresql", moduleName = "postgresql"}
+]
+
+[[package]]
 org = "sanid"
 name = "backend"
 version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "http"},
+	{org = "ballerina", name = "log"},
+	{org = "ballerina", name = "sql"},
 	{org = "ballerina", name = "test"},
-	{org = "ballerinai", name = "observe"}
+	{org = "ballerina", name = "time"},
+	{org = "ballerinai", name = "observe"},
+	{org = "ballerinax", name = "postgresql"}
 ]
 modules = [
 	{org = "sanid", packageName = "backend", moduleName = "backend"},
