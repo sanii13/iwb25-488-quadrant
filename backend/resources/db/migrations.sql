@@ -205,6 +205,33 @@ CREATE INDEX IF NOT EXISTS idx_patients_name ON patients(name);
 CREATE INDEX IF NOT EXISTS idx_patients_phone_number ON patients(phone_number);
 CREATE INDEX IF NOT EXISTS idx_patients_created_at ON patients(created_at);
 
+-- Create doctors table
+CREATE TABLE IF NOT EXISTS doctors (
+    doctor_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    name VARCHAR(255) NOT NULL,
+    specialization VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    qualifications TEXT NOT NULL,
+    experience INTEGER NOT NULL DEFAULT 0,
+    contact_number VARCHAR(20) NOT NULL,
+    languages TEXT[] NOT NULL,
+    image_url VARCHAR(500),
+    rating DECIMAL(3,2) DEFAULT 0.0 CHECK (rating >= 0.0 AND rating <= 5.0),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id)  -- One doctor record per user
+);
+
+-- Create indexes for doctors table
+CREATE INDEX IF NOT EXISTS idx_doctors_user_id ON doctors(user_id);
+CREATE INDEX IF NOT EXISTS idx_doctors_name ON doctors(name);
+CREATE INDEX IF NOT EXISTS idx_doctors_specialization ON doctors(specialization);
+CREATE INDEX IF NOT EXISTS idx_doctors_location ON doctors(location);
+CREATE INDEX IF NOT EXISTS idx_doctors_rating ON doctors(rating);
+CREATE INDEX IF NOT EXISTS idx_doctors_experience ON doctors(experience);
+CREATE INDEX IF NOT EXISTS idx_doctors_created_at ON doctors(created_at);
+
 -- Insert sample articles data for testing (optional)
 INSERT INTO articles (title, category, content, image_url) VALUES
 (
@@ -257,6 +284,60 @@ INSERT INTO patients (user_id, name, phone_number, address, date_of_birth, medic
     'https://example.com/images/patient-john-doe.jpg'
 )
 ON CONFLICT (user_id) DO NOTHING;
+
+-- Insert sample doctor data for testing (optional)
+INSERT INTO doctors (user_id, name, specialization, location, qualifications, experience, contact_number, languages, image_url, rating) VALUES
+(
+    2, -- Assuming doctor@ayurconnect.com has user_id 2
+    'Dr. Priya Sharma',
+    'Ayurvedic Medicine',
+    'Mumbai, Maharashtra',
+    'BAMS (Bachelor of Ayurvedic Medicine and Surgery), MD Ayurveda, Certified Panchakarma Specialist',
+    12,
+    '+91-98765-43210',
+    ARRAY['Hindi', 'English', 'Marathi'],
+    'https://example.com/images/dr-priya-sharma.jpg',
+    4.8
+),
+(
+    4, -- Additional sample doctor
+    'Dr. Rajesh Kumar',
+    'Herbal Medicine',
+    'Delhi, NCR',
+    'BAMS, PhD in Medicinal Plants, Certified Herbalist',
+    8,
+    '+91-98765-43211',
+    ARRAY['Hindi', 'English', 'Punjabi'],
+    'https://example.com/images/dr-rajesh-kumar.jpg',
+    4.6
+),
+(
+    5, -- Additional sample doctor
+    'Dr. Anita Patel',
+    'Yoga Therapy',
+    'Ahmedabad, Gujarat',
+    'BNYS (Bachelor of Naturopathy and Yogic Sciences), Certified Yoga Therapist',
+    15,
+    '+91-98765-43212',
+    ARRAY['Hindi', 'English', 'Gujarati'],
+    'https://example.com/images/dr-anita-patel.jpg',
+    4.9
+)
+ON CONFLICT (user_id) DO NOTHING;
+
+-- Insert additional sample users for doctors
+INSERT INTO users (email, password_hash, role) VALUES
+(
+    'dr.rajesh@ayurconnect.com',
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', -- Hash of 'admin123'
+    'DOCTOR'
+),
+(
+    'dr.anita@ayurconnect.com', 
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', -- Hash of 'admin123'
+    'DOCTOR'
+)
+ON CONFLICT DO NOTHING;
 
 -- Insert sample admin user for testing (password: admin123)
 -- Note: In production, use proper password hashing

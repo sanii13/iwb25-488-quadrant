@@ -8,6 +8,7 @@ controllers:HerbalPlantController herbalPlantController = new;
 controllers:ArticleController articleController = new;
 controllers:UserController userController = new;
 controllers:PatientController patientController = new;
+controllers:DoctorController doctorController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -157,6 +158,80 @@ service /api/patients on new http:Listener(8080) {
     // GET /api/patients/me - Get current user's patient record
     resource function get me(http:Request req) returns http:Response {
         return patientController.getCurrentUserPatient(req);
+    }
+}
+
+// Doctor management service
+service /api/doctors on new http:Listener(8080) {
+
+    // POST /api/doctors - Create a new doctor profile
+    resource function post .(http:Request req) returns http:Response {
+        return doctorController.createDoctor(req);
+    }
+
+    // GET /api/doctors - Get all doctors with optional filtering
+    resource function get .(http:Request req) returns http:Response {
+        return doctorController.getAllDoctors(req);
+    }
+
+    // GET /api/doctors/{id} - Get doctor by ID
+    resource function get [int doctorId](http:Request req) returns http:Response {
+        return doctorController.getDoctorById(req, doctorId);
+    }
+
+    // PUT /api/doctors/{id} - Update doctor profile
+    resource function put [int doctorId](http:Request req) returns http:Response {
+        return doctorController.updateDoctor(req, doctorId);
+    }
+
+    // DELETE /api/doctors/{id} - Delete doctor profile
+    resource function delete [int doctorId](http:Request req) returns http:Response {
+        return doctorController.deleteDoctor(req, doctorId);
+    }
+
+    // GET /api/doctors/user/{userId} - Get doctor by user ID
+    resource function get user/[int userId](http:Request req) returns http:Response {
+        return doctorController.getDoctorByUserId(req, userId);
+    }
+
+    // GET /api/doctors/me - Get current user's doctor profile
+    resource function get me(http:Request req) returns http:Response {
+        return doctorController.getCurrentUserDoctorProfile(req);
+    }
+
+    // GET /api/doctors/specialization/{specialization} - Get doctors by specialization
+    resource function get specialization/[string specialization](http:Request req) returns http:Response {
+        return doctorController.getDoctorsBySpecialization(req, specialization);
+    }
+
+    // GET /api/doctors/location/{location} - Get doctors by location
+    resource function get location/[string location](http:Request req) returns http:Response {
+        return doctorController.getDoctorsByLocation(req, location);
+    }
+
+    // GET /api/doctors/top-rated - Get top-rated doctors
+    resource function get top\-rated(http:Request req) returns http:Response {
+        return doctorController.getTopRatedDoctors(req);
+    }
+
+    // PATCH /api/doctors/{id}/rating - Update doctor rating
+    resource function patch [int doctorId]/rating(http:Request req) returns http:Response {
+        return doctorController.updateDoctorRating(req, doctorId);
+    }
+
+    // GET /api/doctors/specializations - Get available specializations
+    resource function get specializations(http:Request req) returns http:Response {
+        return doctorController.getSpecializations(req);
+    }
+
+    // GET /api/doctors/locations - Get available locations
+    resource function get locations(http:Request req) returns http:Response {
+        return doctorController.getLocations(req);
+    }
+
+    // GET /api/doctors/count - Get doctors count
+    resource function get count(http:Request req) returns http:Response {
+        return doctorController.getDoctorsCount(req);
     }
 }
 
