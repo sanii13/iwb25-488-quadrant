@@ -184,6 +184,27 @@ INSERT INTO herbal_plants (botanical_name, local_name, description, medicinal_us
 )
 ON CONFLICT DO NOTHING;
 
+-- Create patients table
+CREATE TABLE IF NOT EXISTS patients (
+    patient_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    date_of_birth DATE NOT NULL,
+    medical_notes TEXT,
+    image_url VARCHAR(500),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id)  -- One patient record per user
+);
+
+-- Create indexes for patients table
+CREATE INDEX IF NOT EXISTS idx_patients_user_id ON patients(user_id);
+CREATE INDEX IF NOT EXISTS idx_patients_name ON patients(name);
+CREATE INDEX IF NOT EXISTS idx_patients_phone_number ON patients(phone_number);
+CREATE INDEX IF NOT EXISTS idx_patients_created_at ON patients(created_at);
+
 -- Insert sample articles data for testing (optional)
 INSERT INTO articles (title, category, content, image_url) VALUES
 (
@@ -223,6 +244,19 @@ INSERT INTO articles (title, category, content, image_url) VALUES
     'https://example.com/images/herbal-medicine-cabinet.jpg'
 )
 ON CONFLICT DO NOTHING;
+
+-- Insert sample patient data for testing (optional)
+INSERT INTO patients (user_id, name, phone_number, address, date_of_birth, medical_notes, image_url) VALUES
+(
+    3, -- Assuming patient@ayurconnect.com has user_id 3
+    'John Doe',
+    '+1-555-0123',
+    '123 Main Street, Anytown, State 12345',
+    '1985-06-15',
+    'No known allergies. Regular checkups recommended.',
+    'https://example.com/images/patient-john-doe.jpg'
+)
+ON CONFLICT (user_id) DO NOTHING;
 
 -- Insert sample admin user for testing (password: admin123)
 -- Note: In production, use proper password hashing

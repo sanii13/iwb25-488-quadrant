@@ -7,6 +7,7 @@ controllers:RemedyController remedyController = new;
 controllers:HerbalPlantController herbalPlantController = new;
 controllers:ArticleController articleController = new;
 controllers:UserController userController = new;
+controllers:PatientController patientController = new;
 
 // Main service for remedy API endpoints
 service /api/remedies on new http:Listener(8080) {
@@ -117,6 +118,45 @@ service /api/users on new http:Listener(8080) {
     // GET /api/users/role/{role} - Get users by role (admin only)
     resource function get role/[string role](http:Request req) returns http:Response {
         return userController.getUsersByRole(req, role);
+    }
+}
+
+// Patient management service
+service /api/patients on new http:Listener(8080) {
+
+    // POST /api/patients - Create a new patient record
+    resource function post .(http:Request req) returns http:Response {
+        return patientController.createPatient(req);
+    }
+
+    // GET /api/patients - Get all patients (doctors and admins only)
+    resource function get .(http:Request req) returns http:Response {
+        return patientController.getAllPatients(req);
+    }
+
+    // GET /api/patients/{id} - Get patient by ID
+    resource function get [int patientId](http:Request req) returns http:Response {
+        return patientController.getPatientById(req, patientId);
+    }
+
+    // PUT /api/patients/{id} - Update patient
+    resource function put [int patientId](http:Request req) returns http:Response {
+        return patientController.updatePatient(req, patientId);
+    }
+
+    // DELETE /api/patients/{id} - Delete patient (doctors and admins only)
+    resource function delete [int patientId](http:Request req) returns http:Response {
+        return patientController.deletePatient(req, patientId);
+    }
+
+    // GET /api/patients/user/{userId} - Get patient by user ID
+    resource function get user/[int userId](http:Request req) returns http:Response {
+        return patientController.getPatientByUserId(req, userId);
+    }
+
+    // GET /api/patients/me - Get current user's patient record
+    resource function get me(http:Request req) returns http:Response {
+        return patientController.getCurrentUserPatient(req);
     }
 }
 

@@ -128,7 +128,9 @@ function testUpdateUser() {
         models:UserResponse firstUser = users[0];
         
         models:UserUpdate updateData = {
-            email: "updated@example.com"
+            email: "updated@example.com",
+            password: "newpassword123",
+            role: models:PATIENT
         };
         
         models:UserResponse|models:UserErrorResponse result = userService.updateUser(firstUser.user_id, updateData);
