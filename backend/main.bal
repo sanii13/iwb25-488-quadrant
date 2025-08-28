@@ -1,7 +1,15 @@
 import ballerina/http;
-import ayurconnect_backend.controllers.remedy_controller;
 
-public function main() returns error? {
-    // Attach Remedy Controller service
-    check new http:Listener(8080).attach(remedy_controller:service);
+// Main service that handles HTTP requests
+service /api on new http:Listener(8080) {
+
+    // Health check endpoint
+    resource function get health() returns string {
+        return "AyurConnect Backend is running!";
+    }
+
+    // Remedies endpoints
+    resource function get remedies() returns string {
+        return "Remedy endpoint working!";
+    }
 }
