@@ -1,0 +1,1 @@
+-- SQL migrations for Neon PostgreSQL will go here
