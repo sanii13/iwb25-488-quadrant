@@ -16,16 +16,16 @@ const Navbar = () => {
   return (
     <nav className="navbar-bg navbar shadow-md fixed top-0 left-0 w-full z-50" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.04)'}}>
     <div className="flex justify-between items-center px-20 h-18">
-        <div className="flex items-center gap-3 mly-4">
+        <a href="/"><div className="flex items-center gap-3 mly-4">
           <img src={logo} alt="Logo" className="w-8 h-8" />
           <span className="text-[28px] font-bold" style={{color: '#56B280', fontFamily: 'Sahitya, serif'}}>
             AyurConnect
           </span>
-        </div>
+        </div></a>
         <div className="flex gap-10">
-          <a href="#" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Remedies</a>
-          <a href="#" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Herbal Plants</a>
-          <a href="#" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Doctors</a>
+          <a href="/remedies" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Remedies</a>
+          <a href="/herbalPlants" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Herbal Plants</a>
+          <a href="/doctors" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Doctors</a>
           <a href="#" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Articles</a>
         </div>
         <div className="flex gap-4">

@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import PatientProfile from "./pages/PatientProfile";
 import DoctorProfile from "./pages/DoctorProfile";
 import HerbalPlants from "./pages/HerbalPlants";
+import Remedies from "./pages/Remedies";
+
 import "./App.css";
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
           <Route path="/patientProfile" element={<PatientProfile />} />
           <Route path="/doctorProfile" element={<DoctorProfile />} />
           <Route path="/herbalPlants" element={<HerbalPlants />} />
+          <Route path="/remedies" element={<Remedies />} />
         </Routes>
       </div>
     </Router>
