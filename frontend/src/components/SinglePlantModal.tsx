@@ -18,13 +18,22 @@ type SinglePlantModalProps = {
 const SinglePlantModal: React.FC<SinglePlantModalProps> = ({ plant, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-md">
-      <div className="bg-white rounded-2xl shadow-lg max-w-2xl w-full p-8 relative" style={{fontFamily: 'Poppins, sans-serif'}}>
+      {/* <div className="bg-white rounded-2xl shadow-lg max-w-2xl w-full p-8 relative" style={{fontFamily: 'Poppins, sans-serif'}}>
         <button onClick={onClose} className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
         <div className="flex flex-col items-center">
           <img src={plant.image_url} alt={plant.botanical_name} className="w-full h-36 object-cover rounded-xl mb-4" />
           <div className="bg-[#F3F8F3] rounded-lg px-8 py-4 -mt-12 mb-4 shadow text-center">
             <h2 className="text-2xl font-bold text-[#183153]">{plant.botanical_name}</h2>
             <p className="text-gray-700 font-semibold text-base italic">{plant.local_name}</p>
+          </div>
+        </div> */}
+      <div className="bg-white rounded-2xl shadow-lg max-w-5xl w-full p-8 relative animate-fadeIn" style={{fontFamily: 'Poppins, sans-serif'}}>
+        <button onClick={onClose} className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+        <div className="flex flex-col items-center">
+          <img src={plant.image_url} alt={plant.botanical_name} className="w-full h-44 object-cover rounded-xl mb-4" />
+          <div className="bg-[#F3F8F3] rounded-lg px-30 py-6 -mt-20 mb-4 shadow text-center">
+            <h2 className="text-2xl font-bold text-[#183153]">{plant.botanical_name}</h2>
+            <p className="text-gray font-700 text-base italic">{plant.local_name}</p>
           </div>
         </div>
         <div className="mb-4">
