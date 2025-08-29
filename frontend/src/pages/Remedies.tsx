@@ -1,51 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import RemedyPaspanguwa from "../assets/images/remedy-paspanguwa.png";
 import RemedyAloeVera from "../assets/images/remedy-aloe-vera.png";
 import RemedyNeem from "../assets/images/remedy-neem.png";
 import RemedyHero from "../assets/images/remedies-hero.png";
+import SingleRemedyModal from "../components/SingleRemedyModal";
 
-const remedies = [
+type Remedy = {
+  remedy_id: number;
+  name: string;
+  subtitle: string;
+  category?: string;
+  remedy_uses: string[];
+  ingredients: string[];
+  steps: string[];
+  cautions?: string[];
+  image_url: string;
+};
+
+const remedies: Remedy[] = [
   {
+    remedy_id: 1,
     name: "Paspanguwa",
-    description: "Supports urinary tract health, kidney stone prevention, diuretic properties.",
-    image: RemedyPaspanguwa,
+    subtitle: "Supports urinary tract health and kidney stone prevention",
+    image_url: RemedyPaspanguwa,
+   
+    remedy_uses: [
+      "Purifies blood",
+      "Treats skin conditions (acne, eczema)",
+      "Antibacterial and antifungal"
+    ],
+    ingredients: ["Paspanguwa leaves", "Water", "Honey"],
+    steps: [
+      "Wash a handful of Paspanguwa leaves thoroughly.",
+      "Boil the leaves in a pot with 2 cups of water for 10-15 minutes.",
+      "Strain the mixture to remove the leaves.",
+      "Add honey to taste and mix well.",
+    ],
+    cautions: ["Consult a healthcare professional before using Paspanguwa, especially if you have underlying health conditions."],
+    // subtitle: "",
   },
   {
+    remedy_id: 2,
     name: "Aloe Vera Drink",
-    description: "Improves digestion, controls blood sugar, promotes hair growth.",
-    image: RemedyAloeVera,
+    subtitle: "Improves digestion, controls blood sugar, promotes hair growth.",
+    // image: RemedyAloeVera,
+    image_url: RemedyAloeVera,
+ 
+    remedy_uses: [
+      "Aloe Vera drink aids digestion",
+      "Helps control blood sugar",
+      "Promotes hair growth"
+    ],
+    ingredients: ["Aloe Vera gel", "Water", "Honey or lemon juice"],
+    steps: [
+      "Extract fresh Aloe Vera gel from the leaf.",
+      "Blend the gel with water and add honey or lemon juice for taste.",
+      "Strain and serve chilled."
+    ],
+    cautions: ["Consult a healthcare professional before consuming Aloe Vera, especially if pregnant or on medication."],
+    // subtitle: "",
   },
   {
+    remedy_id: 3,
     name: "Neem Paste",
-    description: "Purifies blood, treats skin conditions (acne, eczema).",
-    image: RemedyNeem,
+    subtitle: "Purifies blood, treats skin conditions (acne, eczema).",
+    // image: RemedyNeem,
+    image_url: RemedyNeem,
+    remedy_uses: [
+      "Neem paste is used to purify blood",
+      "Treats various skin conditions such as acne and eczema"
+    ],
+    ingredients: ["Fresh Neem leaves", "Water"],
+    steps: [
+      "Wash and grind Neem leaves with a little water to make a paste.",
+      "Apply the paste to affected skin areas and leave for 15-20 minutes.",
+      "Rinse off with lukewarm water."
+    ],
+    cautions: ["Do a patch test before applying Neem paste to skin; avoid contact with eyes."],
+    // subtitle: "",
   },
 ];
 
 const Remedies: React.FC = () => {
+  const [selectedRemedy, setSelectedRemedy] = useState<null | typeof remedies[0]>(null);
+
   return (
     <div className="min-h-screen bg-white font-[Poppins,sans-serif]">
       <Navbar />
 
       {/* Hero Section */}
-      {/* <section className="relative w-full h-[340px] flex items-center justify-center">
-        <img
-          src={RemedyHero}
-          alt="Remedies Hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="relative z-10 bg-white/80 rounded-xl shadow-lg px-8 py-10 flex flex-col items-center max-w-xl mx-auto">
-          <span className="text-3xl mb-2">
-            <span role="img" aria-label="plant">🌱</span>
-          </span>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#183153] mb-2">Remedies</h1>
-          <p className="text-center text-gray-700 text-base md:text-lg">
-            Discover trusted Ayurvedic remedies, connect with experienced doctors, and explore the healing power of Sri Lanka's indigenous herbal knowledge – all in one place.
-          </p>
-        </div>
-      </section> */}
       <div className="flex flex-col justify-center items-center  h-[630px] w-full " style={{fontFamily: 'Poppins, sans-serif', marginTop: '10vh', backgroundImage: `url(${RemedyHero})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="flex flex-col justify-center items-center bg-white bg-opacity-10 p-8 " style={{ opacity: 0.8, backdropFilter: 'blur(10px)', padding:'16vh', borderRadius:'25px' }}>
           <h1 className="text-3xl">🌿 </h1>
@@ -66,7 +111,7 @@ const Remedies: React.FC = () => {
       </section>
 
       {/* Remedies Section */}
-      <section className="flex flex-col items-center py-4">
+      <section className="flex flex-col items-center py-4" style={{fontFamily: 'Poppins, sans-serif'}}>
         <h3 className="text-[#56B280] text-2xl font-semibold mb-2">Ayurvedic Remedies</h3>
         <p className="text-gray-500 text-center mb-8">
           Browse through the ayurvedic remedy collection crafted for balance and wellness
@@ -78,18 +123,24 @@ const Remedies: React.FC = () => {
               className="bg-white rounded-xl shadow-md flex flex-col items-center p-6 transition-transform hover:scale-105"
             >
               <img
-                src={remedy.image}
+                src={remedy.image_url}
                 alt={remedy.name}
-                className="w-36 h-28 object-cover rounded-lg mb-4"
+                className="w-45 h-30 object-cover rounded-lg mb-4"
               />
               <h4 className="text-[#183153] text-lg font-bold mb-2 text-center">{remedy.name}</h4>
-              <p className="text-gray-700 text-center text-base mb-4">{remedy.description}</p>
-              <button className="bg-[#E6F4EA] text-[#183153] rounded-lg px-6 py-2 font-semibold flex items-center gap-2 hover:bg-[#d0ebdb] transition">
+              <p className="text-gray-600 text-sm mt-2 line-clamp-3 text-center tracking-wider mb-5" style={{marginTop:'2rem', paddingLeft:'3rem',paddingRight:'3rem'}}>{remedy.subtitle}</p>
+              <button
+                className="bg-[#E6F4EA] text-[#183153] rounded-lg px-5 py-2 font-semibold flex items-center gap-2 hover:bg-[#d0ebdb] transition"
+                onClick={() => setSelectedRemedy(remedy)}
+              >
                 See more <span className="text-xl">&#8594;</span>
               </button>
             </div>
           ))}
         </div>
+        {selectedRemedy && (
+          <SingleRemedyModal remedy={selectedRemedy} onClose={() => setSelectedRemedy(null)} />
+        )}
       </section>
 
       {/* Pagination */}
