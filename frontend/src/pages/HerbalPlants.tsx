@@ -7,11 +7,13 @@ import herbalbg from "../assets/images/herbalplantbg.png";
 import Mock from "../assets/images/mock.png";
 
 type Plant = {
-  id: number;
-  name: string;
-  localName: string;
-  description: string;
-  image: string;
+  plant_id: number;
+  botanical_name: string;
+  local_name: string;
+  plant_description: string;
+  medicinal_uses: string[];
+  cultivation_steps: string[];
+  image_url: string;
 };
 
 const HerbalPlants: React.FC = () => {
@@ -37,54 +39,64 @@ const HerbalPlants: React.FC = () => {
     // 🔹 Mock results (later replace with backend API)
     const mockResults: Plant[] = [
       {
-        id: 1,
-        name: "Aerva Lanata",
-        localName: "Polpala",
-        description:
+        plant_id: 1,
+        botanical_name: "Aerva Lanata",
+        local_name: "Polpala",
+        plant_description:
           "Supports urinary tract health, kidney stone prevention, diuretic properties.",
-        image:
-          Mock,
+        medicinal_uses: ["Urinary tract health", "Kidney stone prevention", "Diuretic"],
+        cultivation_steps: ["Sow seeds in well-drained soil", "Water regularly", "Harvest after flowering"],
+        image_url: Mock,
       },
       {
-        id: 2,
-        name: "Curry Leaves",
-        localName: "Karapincha",
-        description:
+        plant_id: 2,
+        botanical_name: "Curry Leaves",
+        local_name: "Karapincha",
+        plant_description:
           "Improves digestion, controls blood sugar, promotes hair growth.",
-        image:
-          Mock,
+        medicinal_uses: ["Improves digestion", "Controls blood sugar", "Promotes hair growth"],
+        cultivation_steps: ["Plant stem cuttings", "Keep in sunny location", "Water moderately"],
+        image_url: Mock,
       },
       {
-        id: 3,
-        name: "Neem",
-        localName: "Kohomba",
-        description:
+        plant_id: 3,
+        botanical_name: "Neem",
+        local_name: "Kohomba",
+        plant_description:
           "Purifies blood, treats skin conditions (acne, eczema), boosts immunity.",
-        image: Mock,
+        medicinal_uses: ["Purifies blood", "Treats skin conditions", "Boosts immunity"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock,
       },
       {
-        id: 1,
-        name: "Aerva Lanata",
-        localName: "Polpala",
-        description:
+        plant_id: 1,
+        botanical_name: "Aerva Lanata",
+        local_name: "Polpala",
+        plant_description:
           "Supports urinary tract health, kidney stone prevention, diuretic properties.",
-        image: Mock,
+        medicinal_uses: ["Urinary tract health", "Kidney stone prevention", "Diuretic"],
+        cultivation_steps: ["Sow seeds in well-drained soil", "Water regularly", "Harvest after flowering"],
+        image_url: Mock,
       },
       {
-        id: 2,
-        name: "Curry Leaves",
-        localName: "Karapincha",
-        description:
+        plant_id: 2,
+        botanical_name: "Curry Leaves",
+        local_name: "Karapincha",
+        plant_description:
           "Improves digestion, controls blood sugar, promotes hair growth.",
-        image: Mock,
+        medicinal_uses: ["Improves digestion", "Controls blood sugar", "Promotes hair growth"],
+        cultivation_steps: ["Plant stem cuttings", "Keep in sunny location", "Water moderately"],
+        image_url: Mock,
       },
       {
-        id: 3,
-        name: "Neem",
-        localName: "Kohomba",
-        description:
+        plant_id: 3,
+        botanical_name: "Neem",
+        local_name: "Kohomba",
+        plant_description:
           "Purifies blood, treats skin conditions (acne, eczema), boosts immunity.",
-        image: Mock,
+        medicinal_uses: ["Purifies blood", "Treats skin conditions", "Boosts immunity"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock,
       },
     ];
 
@@ -159,7 +171,7 @@ const HerbalPlants: React.FC = () => {
     {results.length > 0 ? (
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
     {results.map((plant) => (
-      <PlantCard key={plant.id} plant={plant} onSeeMore={() => setSelectedPlant(plant)} />
+      <PlantCard key={plant.plant_id} plant={plant} onSeeMore={() => setSelectedPlant(plant)} />
     ))}
     {/* Single Plant Modal */}
     {selectedPlant && (
