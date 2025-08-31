@@ -276,9 +276,9 @@ const Login: React.FC = () => {
 
             <div className="flex flex-col gap-4">
               <button 
-                className="w-full !bg-blue-600 hover:!bg-blue-700 !text-white !border-0 !p-4 !py-4 rounded-lg text-lg font-medium cursor-pointer transition-colors duration-300 outline-none !h-14"
+                className="w-full !bg-green-600 hover:!bg-green-700 !text-white !border-0 !p-4 !py-4 rounded-lg text-lg font-medium cursor-pointer transition-colors duration-300 outline-none !h-14"
                 style={{ 
-                  backgroundColor: '#2563eb', 
+                  backgroundColor: '#16a34a', 
                   color: 'white', 
                   border: 'none',
                   padding: '1rem',

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import PatientProfile from "./pages/PatientProfile";
 import DoctorProfile from "./pages/DoctorProfile";
 import HerbalPlants from "./pages/HerbalPlants";
+import Articles from "./pages/Articles";
 import Remedies from "./pages/Remedies";
 
 import "./App.css";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/patientProfile" element={<PatientProfile />} />
           <Route path="/doctorProfile" element={<DoctorProfile />} />
           <Route path="/herbalPlants" element={<HerbalPlants />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="/remedies" element={<Remedies />} />
         </Routes>
       </div>
