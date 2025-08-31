@@ -5,6 +5,9 @@ import RemedyPaspanguwa from "../assets/images/remedy-paspanguwa.png";
 import RemedyAloeVera from "../assets/images/remedy-aloe-vera.png";
 import RemedyNeem from "../assets/images/remedy-neem.png";
 import RemedyHero from "../assets/images/remedies-hero.png";
+import TurmericMilk from "../assets/images/remedy-turmeric-milk.jpg";
+import GingerTea from "../assets/images/remedy-ginger-tea.jpg";
+import CinnamonWater from "../assets/images/remedy-cinnamon-water.jpg";
 import SingleRemedyModal from "../components/SingleRemedyModal";
 
 type Remedy = {
@@ -18,14 +21,12 @@ type Remedy = {
   cautions?: string[];
   image_url: string;
 };
-
 const remedies: Remedy[] = [
   {
     remedy_id: 1,
     name: "Paspanguwa",
     subtitle: "Supports urinary tract health and kidney stone prevention",
     image_url: RemedyPaspanguwa,
-   
     remedy_uses: [
       "Purifies blood",
       "Treats skin conditions (acne, eczema)",
@@ -39,15 +40,12 @@ const remedies: Remedy[] = [
       "Add honey to taste and mix well.",
     ],
     cautions: ["Consult a healthcare professional before using Paspanguwa, especially if you have underlying health conditions."],
-    // subtitle: "",
   },
   {
     remedy_id: 2,
     name: "Aloe Vera Drink",
     subtitle: "Improves digestion, controls blood sugar, promotes hair growth.",
-    // image: RemedyAloeVera,
     image_url: RemedyAloeVera,
- 
     remedy_uses: [
       "Aloe Vera drink aids digestion",
       "Helps control blood sugar",
@@ -60,13 +58,11 @@ const remedies: Remedy[] = [
       "Strain and serve chilled."
     ],
     cautions: ["Consult a healthcare professional before consuming Aloe Vera, especially if pregnant or on medication."],
-    // subtitle: "",
   },
   {
     remedy_id: 3,
     name: "Neem Paste",
     subtitle: "Purifies blood, treats skin conditions (acne, eczema).",
-    // image: RemedyNeem,
     image_url: RemedyNeem,
     remedy_uses: [
       "Neem paste is used to purify blood",
@@ -79,9 +75,127 @@ const remedies: Remedy[] = [
       "Rinse off with lukewarm water."
     ],
     cautions: ["Do a patch test before applying Neem paste to skin; avoid contact with eyes."],
-    // subtitle: "",
+  },
+
+  {
+    remedy_id: 4,
+    name: "Turmeric Milk (Golden Milk)",
+    subtitle: "Boosts immunity and reduces inflammation.",
+    image_url: TurmericMilk,
+    remedy_uses: [
+      "Strengthens immunity",
+      "Soothes sore throat and cough",
+      "Anti-inflammatory and antioxidant"
+    ],
+    ingredients: ["1 cup milk", "1 tsp turmeric powder", "Honey"],
+    steps: [
+      "Warm a cup of milk in a saucepan.",
+      "Add turmeric powder and stir well.",
+      "Sweeten with honey and drink warm."
+    ],
+    cautions: ["Avoid excess turmeric if you have gallbladder issues or are on blood thinners."],
+  },
+  {
+    remedy_id: 5,
+    name: "Ginger Tea",
+    subtitle: "Relieves nausea, aids digestion, and reduces cold symptoms.",
+    image_url: GingerTea,
+    remedy_uses: [
+      "Reduces nausea and bloating",
+      "Soothes sore throat and congestion",
+      "Improves digestion"
+    ],
+    ingredients: ["Fresh ginger slices", "2 cups water", "Lemon and honey"],
+    steps: [
+      "Boil water and add sliced ginger.",
+      "Simmer for 10 minutes and strain.",
+      "Add lemon juice and honey before drinking."
+    ],
+    cautions: ["May cause heartburn in sensitive individuals if consumed in excess."],
+  },
+  {
+    remedy_id: 6,
+    name: "Cinnamon Water",
+    subtitle: "Helps regulate blood sugar and boosts metabolism.",
+    image_url: CinnamonWater,
+    remedy_uses: [
+      "Balances blood sugar",
+      "Boosts metabolism",
+      "Improves digestion"
+    ],
+    ingredients: ["1 cinnamon stick", "2 cups water"],
+    steps: [
+      "Boil water and add cinnamon stick.",
+      "Let it steep for 10 minutes.",
+      "Drink warm or chilled."
+    ],
+    cautions: ["Avoid overconsumption as high doses of cinnamon may affect the liver."],
   },
 ];
+
+// const remedies: Remedy[] = [
+//   {
+//     remedy_id: 1,
+//     name: "Paspanguwa",
+//     subtitle: "Supports urinary tract health and kidney stone prevention",
+//     image_url: RemedyPaspanguwa,
+   
+//     remedy_uses: [
+//       "Purifies blood",
+//       "Treats skin conditions (acne, eczema)",
+//       "Antibacterial and antifungal"
+//     ],
+//     ingredients: ["Paspanguwa leaves", "Water", "Honey"],
+//     steps: [
+//       "Wash a handful of Paspanguwa leaves thoroughly.",
+//       "Boil the leaves in a pot with 2 cups of water for 10-15 minutes.",
+//       "Strain the mixture to remove the leaves.",
+//       "Add honey to taste and mix well.",
+//     ],
+//     cautions: ["Consult a healthcare professional before using Paspanguwa, especially if you have underlying health conditions."],
+//     // subtitle: "",
+//   },
+//   {
+//     remedy_id: 2,
+//     name: "Aloe Vera Drink",
+//     subtitle: "Improves digestion, controls blood sugar, promotes hair growth.",
+//     // image: RemedyAloeVera,
+//     image_url: RemedyAloeVera,
+ 
+//     remedy_uses: [
+//       "Aloe Vera drink aids digestion",
+//       "Helps control blood sugar",
+//       "Promotes hair growth"
+//     ],
+//     ingredients: ["Aloe Vera gel", "Water", "Honey or lemon juice"],
+//     steps: [
+//       "Extract fresh Aloe Vera gel from the leaf.",
+//       "Blend the gel with water and add honey or lemon juice for taste.",
+//       "Strain and serve chilled."
+//     ],
+//     cautions: ["Consult a healthcare professional before consuming Aloe Vera, especially if pregnant or on medication."],
+//     // subtitle: "",
+//   },
+//   {
+//     remedy_id: 3,
+//     name: "Neem Paste",
+//     subtitle: "Purifies blood, treats skin conditions (acne, eczema).",
+//     // image: RemedyNeem,
+//     image_url: RemedyNeem,
+//     remedy_uses: [
+//       "Neem paste is used to purify blood",
+//       "Treats various skin conditions such as acne and eczema"
+//     ],
+//     ingredients: ["Fresh Neem leaves", "Water"],
+//     steps: [
+//       "Wash and grind Neem leaves with a little water to make a paste.",
+//       "Apply the paste to affected skin areas and leave for 15-20 minutes.",
+//       "Rinse off with lukewarm water."
+//     ],
+//     cautions: ["Do a patch test before applying Neem paste to skin; avoid contact with eyes."],
+//     // subtitle: "",
+//   },
+// ];
 
 const Remedies: React.FC = () => {
   const [selectedRemedy, setSelectedRemedy] = useState<null | typeof remedies[0]>(null);
@@ -117,7 +231,9 @@ const Remedies: React.FC = () => {
           Browse through the ayurvedic remedy collection crafted for balance and wellness
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 w-full max-w-6xl px-4">
-          {remedies.concat(remedies).map((remedy, idx) => (
+          {/* {remedies.concat(remedies).map((remedy, idx) => ( */}
+          {remedies.map((remedy, idx) => (
+
             <div
               key={idx}
               className="bg-white rounded-xl shadow-md flex flex-col items-center p-6 transition-transform hover:scale-105"
