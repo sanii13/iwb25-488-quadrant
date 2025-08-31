@@ -138,7 +138,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <button className="tracking-widest px-8 py-3 bg-[#56B280] text-white rounded-[12px] font-semibold shadow hover:bg-[#44966a] transition-all flex items-center gap-2 text-lg" style={{fontFamily: 'Poppins, sans-serif', marginTop: '5rem', marginBottom: '1rem', paddingLeft: '2rem', paddingRight: '2rem'}}>
-          <a href="/finddoctors">Find Doctors</a>
+          <a href="/doctors">Find Doctors</a>
           <span className="text-2xl">&#8594;</span>
         </button>
       </section>
