@@ -5,6 +5,7 @@ import ArticleCard from "../components/ArticleCard";
 import ArticleModal from "../components/ArticleModal";
 import articleBg from "../assets/images/articleBg.jpg";
 import articleImage1 from "../assets/images/articleImage1.png";
+import articleImage2 from "../assets/images/articleImage2.jpg";
 
 type Article = {
   id: number;
@@ -77,32 +78,32 @@ Regular consumption of chaas can significantly improve digestive health, boost i
         category: "Health Category",
         date: "Aug 05, 2025",
         description: "Discover the ancient wisdom of Sri Lankan traditional medicine and learn about powerful herbal remedies that have been used for generations to treat common health issues naturally.",
-        image: articleImage1,
+        image: articleImage2,
         author: "Traditional Medicine Expert",
         content: `Sri Lanka's rich biodiversity has blessed the island with an abundance of medicinal plants that form the backbone of traditional healing practices. For centuries, local healers have used these natural remedies to treat various ailments effectively.
 
-**Common Herbal Remedies:**
+Common Herbal Remedies:
 
-**For Digestive Issues:**
-• **Ginger (Inguru)**: Fresh ginger tea helps with nausea and indigestion
-• **Curry Leaves (Karapincha)**: Improves digestion and metabolism
-• **Coriander (Kottamalli)**: Seeds boiled in water aid digestion
+For Digestive Issues:
+• Ginger (Inguru): Fresh ginger tea helps with nausea and indigestion
+• Curry Leaves (Karapincha): Improves digestion and metabolism
+• Coriander (Kottamalli): Seeds boiled in water aid digestion
 
-**For Respiratory Problems:**
-• **Tulsi (Maduruthala)**: Natural expectorant and immune booster
-• **Gotu Kola (Gotukola)**: Helps with respiratory inflammation
-• **Pepper (Gammiris)**: Natural decongestant
+For Respiratory Problems:
+• Tulsi (Maduruthala): Natural expectorant and immune booster
+• Gotu Kola (Gotukola): Helps with respiratory inflammation
+• Pepper (Gammiris): Natural decongestant
 
-**For Skin Conditions:**
-• **Neem (Kohomba)**: Powerful antimicrobial properties
-• **Turmeric (Kaha)**: Anti-inflammatory and healing properties
-• **Aloe Vera (Komarika)**: Soothes and heals skin irritations
+For Skin Conditions:
+• Neem (Kohomba): Powerful antimicrobial properties
+• Turmeric (Kaha): Anti-inflammatory and healing properties
+• Aloe Vera (Komarika): Soothes and heals skin irritations
 
-**Preparation Methods:**
+Preparation Methods:
 
 Most remedies are prepared as decoctions, herbal teas, or pastes. The key is using fresh, high-quality herbs and following traditional preparation methods that preserve the active compounds.
 
-**Safety Considerations:**
+Safety Considerations:
 
 While these remedies are generally safe, it's important to consult with qualified practitioners, especially when dealing with serious health conditions or when taking other medications.
 
@@ -132,7 +133,7 @@ The wisdom embedded in these traditional practices offers valuable insights for 
         category: "Health Category", 
         date: "Aug 05, 2025",
         description: "Discover the ancient wisdom of Sri Lankan traditional medicine and learn about powerful herbal remedies that have been used for generations to treat common health issues naturally.",
-        image: articleImage1,
+        image: articleImage2,
         author: "Traditional Medicine Expert"
       }
     ];
@@ -204,7 +205,7 @@ The wisdom embedded in these traditional practices offers valuable insights for 
       {/* Articles Grid */}
       <div className="max-w-6xl mx-auto px-6 py-8" style={{ margin: 'auto', paddingTop: '4rem', paddingBottom: '4rem' }}>
         {results.length > 0 ? (
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-6">
             {results.map((article) => (
               <ArticleCard 
                 key={article.id} 
