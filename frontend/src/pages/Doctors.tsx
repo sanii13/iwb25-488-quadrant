@@ -5,6 +5,10 @@ import DoctorsHero from "../assets/images/doctors-hero.png";
 import Doctor1 from "../assets/images/doctor1.png";
 import Doctor2 from "../assets/images/doctor2.png";
 import Doctor3 from "../assets/images/doctor3.png";
+import Doctor4 from "../assets/images/doctor4.jpg";
+import Doctor5 from "../assets/images/doctor5.jpg";
+import Doctor6 from "../assets/images/doctor6.jpg";
+
 
 const doctors = [
   {
@@ -26,19 +30,19 @@ const doctors = [
     rating: 4.5,
   },
   {
-    img: Doctor1,
+    img: Doctor5,
     name: "Dr. Nimal Perera",
     title: "Pediatric Ayurveda",
     rating: 4.5,
   },
   {
-    img: Doctor2,
+    img: Doctor4,
     name: "Dr. Samanthi Jayasuriya",
     title: "Ayurveda Nutritionist",
     rating: 4.5,
   },
   {
-    img: Doctor3,
+    img: Doctor6,
     name: "Dr. Ruwan Gunasekara",
     title: "Ayurveda Dermatologist",
     rating: 4.5,
