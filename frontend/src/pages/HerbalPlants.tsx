@@ -4,7 +4,12 @@ import Footer from "../components/footer";
 import PlantCard from "../components/plantCard";
 import SinglePlantModal from "../components/SinglePlantModal";
 import herbalbg from "../assets/images/herbalplantbg.png";
-import Mock from "../assets/images/mock.png";
+import Mock1 from "../assets/images/mock1.png";
+import Mock2 from "../assets/images/mock2.png";
+import Mock3 from "../assets/images/mock3.png";
+import Mock4 from "../assets/images/mock4.png";
+import Mock5 from "../assets/images/mock5.png";
+import Mock6 from "../assets/images/mock6.png";
 
 type Plant = {
   plant_id: number;
@@ -17,91 +22,91 @@ type Plant = {
 };
 
 const HerbalPlants: React.FC = () => {
+  const mockResults: Plant[] = [
+      {
+        plant_id: 1,
+        botanical_name: "Aerva Lanata",
+        local_name: "Polpala",
+        plant_description:
+          "Supports urinary tract health, kidney stone prevention, diuretic properties.",
+        medicinal_uses: ["Urinary tract health", "Kidney stone prevention", "Diuretic"],
+        cultivation_steps: ["Sow seeds in well-drained soil", "Water regularly", "Harvest after flowering"],
+        image_url: Mock1,
+      },
+      {
+        plant_id: 2,
+        botanical_name: "Curry Leaves",
+        local_name: "Karapincha",
+        plant_description:
+          "Improves digestion, controls blood sugar, promotes hair growth.",
+        medicinal_uses: ["Improves digestion", "Controls blood sugar", "Promotes hair growth"],
+        cultivation_steps: ["Plant stem cuttings", "Keep in sunny location", "Water moderately"],
+        image_url: Mock2,
+      },
+      {
+        plant_id: 3,
+        botanical_name: "Neem",
+        local_name: "Kohomba",
+        plant_description:
+          "Purifies blood, treats skin conditions (acne, eczema), boosts immunity.",
+        medicinal_uses: ["Purifies blood", "Treats skin conditions", "Boosts immunity"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock3,
+      },
+      {
+        plant_id: 4,
+        botanical_name: "Beli Fruit",
+        local_name: "Beli",
+        plant_description:
+          "Treats diarrhea, dysentery, and gastric issues; promotes appetite and digestion.",
+        medicinal_uses: ["Treats diarrhea", "Dysentery", "Gastric issues"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock4,
+      },
+      {
+        plant_id: 5,
+        botanical_name: "Aralu",
+        local_name: "Aralu",
+        plant_description:
+          "Used for constipation, detoxification, and strengthening the digestive system.",
+        medicinal_uses: ["Treats constipation", "Detoxification", "Strengthens digestive system"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock5,
+      },
+      {
+        plant_id: 6,
+        botanical_name: "Nelli",
+        local_name: "Nelli",
+        plant_description:
+          "Rich in Vitamin C, boosts immunity, improves digestion, promotes hair and skin health.",
+        medicinal_uses: ["Boosts immunity", "Improves digestion", "Promotes hair and skin health"],
+        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
+        image_url: Mock6,
+      },
+    ];
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Plant[]>([]);
+  const [results, setResults] = useState<Plant[]>(mockResults);
   const [selectedPlant, setSelectedPlant] = useState<Plant | null>(null);
 
   const handleSearch = () => {
-    if (!query.trim()) return;
-    if (!query.trim()) return;
+  if (!query.trim()) {
+    setResults(mockResults); 
+    return;
+  }
 
-    // 🔹 Later: replace with your Ballerina backend endpoint
-    // Example: http://localhost:8080/api/plants?search=${query}
-    console.log("Searching for:", query);
+  const filtered = mockResults.filter(
+    (plant) =>
+      plant.local_name.toLowerCase().includes(query.toLowerCase()) ||
+      plant.botanical_name.toLowerCase().includes(query.toLowerCase()) ||
+      plant.medicinal_uses.some((use) =>
+        use.toLowerCase().includes(query.toLowerCase())
+      )
+  );
 
-    // fetch(`http://localhost:8080/api/plants?search=${query}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => console.error(err));
+  setResults(filtered);
+};
 
-    // 🔹 Mock results (later replace with backend API)
-    const mockResults: Plant[] = [
-      {
-        plant_id: 1,
-        botanical_name: "Aerva Lanata",
-        local_name: "Polpala",
-        plant_description:
-          "Supports urinary tract health, kidney stone prevention, diuretic properties.",
-        medicinal_uses: ["Urinary tract health", "Kidney stone prevention", "Diuretic"],
-        cultivation_steps: ["Sow seeds in well-drained soil", "Water regularly", "Harvest after flowering"],
-        image_url: Mock,
-      },
-      {
-        plant_id: 2,
-        botanical_name: "Curry Leaves",
-        local_name: "Karapincha",
-        plant_description:
-          "Improves digestion, controls blood sugar, promotes hair growth.",
-        medicinal_uses: ["Improves digestion", "Controls blood sugar", "Promotes hair growth"],
-        cultivation_steps: ["Plant stem cuttings", "Keep in sunny location", "Water moderately"],
-        image_url: Mock,
-      },
-      {
-        plant_id: 3,
-        botanical_name: "Neem",
-        local_name: "Kohomba",
-        plant_description:
-          "Purifies blood, treats skin conditions (acne, eczema), boosts immunity.",
-        medicinal_uses: ["Purifies blood", "Treats skin conditions", "Boosts immunity"],
-        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
-        image_url: Mock,
-      },
-      {
-        plant_id: 1,
-        botanical_name: "Aerva Lanata",
-        local_name: "Polpala",
-        plant_description:
-          "Supports urinary tract health, kidney stone prevention, diuretic properties.",
-        medicinal_uses: ["Urinary tract health", "Kidney stone prevention", "Diuretic"],
-        cultivation_steps: ["Sow seeds in well-drained soil", "Water regularly", "Harvest after flowering"],
-        image_url: Mock,
-      },
-      {
-        plant_id: 2,
-        botanical_name: "Curry Leaves",
-        local_name: "Karapincha",
-        plant_description:
-          "Improves digestion, controls blood sugar, promotes hair growth.",
-        medicinal_uses: ["Improves digestion", "Controls blood sugar", "Promotes hair growth"],
-        cultivation_steps: ["Plant stem cuttings", "Keep in sunny location", "Water moderately"],
-        image_url: Mock,
-      },
-      {
-        plant_id: 3,
-        botanical_name: "Neem",
-        local_name: "Kohomba",
-        plant_description:
-          "Purifies blood, treats skin conditions (acne, eczema), boosts immunity.",
-        medicinal_uses: ["Purifies blood", "Treats skin conditions", "Boosts immunity"],
-        cultivation_steps: ["Plant seeds or saplings", "Water occasionally", "Prune regularly"],
-        image_url: Mock,
-      },
-    ];
-
-    setResults(mockResults);
-  };
+  
 
   return (
     <div className="min-h-screen bg-gray-50 ">
