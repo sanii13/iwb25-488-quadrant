@@ -17,23 +17,23 @@ type ArticleModalProps = {
 const defaultContent = `
 Ayurvedic chaas, also known as takra, is a traditional fermented drink that has been cherished in Indian households for centuries. This refreshing beverage is not just a cooling summer drink but a powerhouse of nutritional and medicinal benefits.
 
-**What is Chaas?**
+What is Chaas?
 
 Chaas is essentially buttermilk prepared by churning curd (yogurt) with water and various spices. The fermentation process creates beneficial probiotics that support digestive health and overall well-being.
 
-**Health Benefits:**
+Health Benefits:
 
-• **Digestive Aid**: The probiotics in chaas help maintain healthy gut flora and improve digestion
-• **Cooling Properties**: Perfect for hot weather, helps regulate body temperature
-• **Nutrient Rich**: Contains essential vitamins, minerals, and proteins
-• **Hydration**: Excellent source of hydration with added electrolytes
-• **Weight Management**: Low in calories but high in nutrients, supports healthy weight management
+• Digestive Aid: The probiotics in chaas help maintain healthy gut flora and improve digestion
+• Cooling Properties: Perfect for hot weather, helps regulate body temperature
+• Nutrient Rich: Contains essential vitamins, minerals, and proteins
+• Hydration: Excellent source of hydration with added electrolytes
+• Weight Management: Low in calories but high in nutrients, supports healthy weight management
 
-**Traditional Preparation:**
+Traditional Preparation:
 
 The traditional method involves churning fresh curd with a wooden churner (madhani) along with water, salt, and spices like cumin, ginger, and mint. This process not only creates the perfect texture but also enhances the probiotic content.
 
-**Modern Relevance:**
+Modern Relevance:
 
 In today's fast-paced world, chaas serves as a natural energy drink without artificial additives. It's an excellent alternative to processed beverages and provides sustained energy throughout the day.
 

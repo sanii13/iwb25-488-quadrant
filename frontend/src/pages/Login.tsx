@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [showRoleSelection, setShowRoleSelection] = useState(false);
@@ -30,6 +32,8 @@ const Login: React.FC = () => {
       // Handle login logic here
       console.log('Login submitted');
       setShowForm(false);
+      // Navigate to home page after successful login
+      navigate('/');
     }
   };
 
@@ -45,6 +49,8 @@ const Login: React.FC = () => {
     console.log(`${selectedRole} form submitted`);
     setShowRoleForm(false);
     setSelectedRole(null);
+    // Navigate to home page after successful registration
+    navigate('/');
   };
 
   return (

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import RemedyPaspanguwa from "../assets/images/remedy-paspanguwa.png";
-import RemedyAloeVera from "../assets/images/remedy-aloe-vera.png";
-import RemedyNeem from "../assets/images/remedy-neem.png";
+import RemedyPaspanguwa from "../assets/images/remedy-paspanguwa.jpg";
+import RemedyAloeVera from "../assets/images/remedy-aloe-vera.jpg";
+import RemedyNeem from "../assets/images/remedy-neem.jpeg";
 import RemedyHero from "../assets/images/remedies-hero.png";
 import TurmericMilk from "../assets/images/remedy-turmeric-milk.jpg";
 import GingerTea from "../assets/images/remedy-ginger-tea.jpg";
