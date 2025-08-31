@@ -26,7 +26,7 @@ const Navbar = () => {
           <a href="/remedies" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Remedies</a>
           <a href="/herbalPlants" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Herbal Plants</a>
           <a href="/doctors" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Doctors</a>
-          <a href="#" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Articles</a>
+          <a href="/articles" className="text-[16px] text-gray-500 font-medium hover:text-[#56B280] transition-colors">Articles</a>
         </div>
         <div className="flex gap-4">
     <button 
