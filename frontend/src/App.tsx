@@ -13,6 +13,8 @@ import Doctors from "./pages/Doctors";
 import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <Router>
       <div className="App">

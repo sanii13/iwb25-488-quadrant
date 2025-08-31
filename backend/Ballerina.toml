@@ -6,3 +6,53 @@ distribution = "2201.10.0"
 
 [build-options]
 observabilityIncluded = true
+
+[[dependency]]
+org = "ballerina"
+name = "http"
+version = "2.12.1"
+
+[[dependency]]
+org = "ballerina"
+name = "openapi"
+version = "1.7.2"
+
+[[dependency]]
+org = "ballerinax"
+name = "postgresql"
+version = "1.13.0"
+
+[[dependency]]
+org = "ballerina"
+name = "sql"
+version = "1.13.0"
+
+[[dependency]]
+org = "ballerina"
+name = "log"
+version = "2.10.0"
+
+[[dependency]]
+org = "ballerina"
+name = "time"
+version = "2.4.0"
+
+[[dependency]]
+org = "ballerina"
+name = "crypto"
+version = "2.7.2"
+
+[[dependency]]
+org = "ballerina"
+name = "jwt"
+version = "2.12.0"
+
+[[dependency]]
+org = "ballerina"
+name = "uuid"
+version = "1.9.0"
+
+[[dependency]]
+org = "ballerina"
+name = "regex"
+version = "1.5.0"
